@@ -1,0 +1,41 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    font-family: "Noto Sans", sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+    // @include respond(phone) {
+    //     font-size: 56.25%;
+    // }
+
+}
+
+body {
+  
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+:root {
+    --color-primary-background: #b5b5b5;
+
+
+    --color-primary-main-container:#d9d9d9;
+
+    --color-primary-chat-area:#f2eded;
+
+    --color-primary-sidebar-users:#f2eded;
+
+    --box--shadow:rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+

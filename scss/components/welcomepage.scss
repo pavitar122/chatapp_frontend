@@ -1,0 +1,16 @@
+.welcome-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex:1;
+
+    &__image{
+        height: 40rem;
+    }
+
+    &__text{
+        font-size: 3rem;
+        color: rgb(102, 99, 99);
+    }
+}

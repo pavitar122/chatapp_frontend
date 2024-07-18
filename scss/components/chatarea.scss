@@ -1,0 +1,122 @@
+.chat-area{
+    width: 70%;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.ca-header{
+    font-family: "Noto Sans", sans-serif;
+    background-color: white;
+    height: 5rem;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--box--shadow);
+
+    &__profilepic{
+        width: 4rem;
+        height: 4rem;
+        margin-left: 2rem;
+    }
+
+    &__del-icon{
+        font-size: 2.5rem;
+        margin-right: 1rem;
+        cursor: pointer;
+    }
+
+    &-detail{
+     margin-left: 1rem;
+
+        &-user{
+            font-weight: 500;
+            font-size: 1.5rem;
+        }
+
+        &-status{
+            font-weight: 400;
+            font-size: 1rem;
+        }
+    }
+
+    &-container{
+        display: flex;
+        align-items: center;
+      
+        &-icon{
+            background-color: rgb(200, 197, 197);
+            border-radius: 50%;
+            height: 4rem;
+            width: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 1rem;
+
+            &-icon{
+                font-size: 3rem;
+                font-weight: 500;
+                color: white;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+
+.ca-message{
+    background-color: white;
+    flex: 1;
+    border-radius: 10px;
+    padding: 3rem 2rem 3rem 2rem;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    background-color: var(--color-primary-chat-area);
+    box-shadow: var(--box--shadow);
+    width: 62vw;
+}
+
+.ca-input{
+    background-color: white;
+    height: 8%;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--box--shadow);
+
+    @include respond(phone) {
+        height: 5%;
+    }
+
+    &__send-icon{
+        font-size: 2.5rem;
+        margin-right: 1rem;
+        cursor: pointer;
+    }
+
+    &__input{
+        width: 100%;
+        outline-width: 0;
+        border: 0;
+        margin-left: 0.3rem;
+        font-size: 1.5rem;
+        margin-left: 1rem;
+        color: rgb(86, 86, 86);
+
+        &:focus{
+            outline: none;
+        }
+    }
+}
+
+.input-form{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

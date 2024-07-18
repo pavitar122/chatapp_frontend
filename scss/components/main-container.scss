@@ -1,0 +1,16 @@
+.main-container {
+    background-color: var(--color-primary-main-container);
+    box-shadow: 0.5rem 0.5rem 1rem  rgba($color: #000000, $alpha: 0.5);
+    min-width: 90vw;
+    height: 90vh;
+    padding: 0.3rem;
+    border-radius: 1rem;
+    display: flex;
+
+    @include respond(phone) {
+        height: 100vh;
+        width: 100vw;
+        border-radius: 0;
+    }
+
+}
