@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useAuthContext } from "../context/AuthContext"
 
 const useSignup = () => {
+    const apiUrl = process.env.REACT_APP_API;
     const { setAuthUser } = useAuthContext();
 
     const signup = async (inputs) => {
@@ -11,7 +12,7 @@ const useSignup = () => {
         if (!success) return;
 
         try {
-            const response = await axios.post("https://chatapp-backend-zttg.onrender.com/api/auth/signup", inputs)
+            const response = await axios.post(`${apiUrl}/api/auth/signup`, inputs)
             if (response) {
                 localStorage.setItem("chatUser", JSON.stringify(response.data))
                 setAuthUser(response.data)

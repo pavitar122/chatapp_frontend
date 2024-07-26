@@ -2,6 +2,7 @@ import React from 'react'
 import logo from "../logo/logo.png"
 
 const WelcomeCon = () => {
+    
     return (
         <div className='welcome-page'>
             <img className='welcome-page__image' src={logo} alt="Chat Logo" />

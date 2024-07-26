@@ -17,8 +17,8 @@ const Sidebar = () => {
     const { logout } = useLogout();
     const { getConversations } = useConversations();
     const { authUser } = useAuthContext();
-    const { onlineUsers, socket } = useSocketContext();
-    const { sidebarConversations, setmessages } = useConversationContext();
+    const { onlineUsers } = useSocketContext();
+    const { sidebarConversations } = useConversationContext();
 
 
     useEffect(() => {

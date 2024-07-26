@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import logo from "../logo/logo.png";
 import OnlUser from "../components/OnlUser.js";
 import useUsers from '../hooks/useUsers.js';
-import { useAuthContext } from '../context/AuthContext.js';
 import { useSelector } from 'react-redux';
 import { useSocketContext } from '../context/socketContext';
 import { useConversationContext } from '../context/ConversationContext.js';
@@ -10,7 +9,6 @@ import useConversations from '../hooks/useConversations.js';
 
 const OnlArea = () => {
   const { getUsers } = useUsers();
-  const { authUser } = useAuthContext();
   const lightTheme = useSelector((state) => state.theme.lightTheme);
   const { onlineUsers } = useSocketContext();
   const { allUsers } = useConversationContext();
@@ -18,7 +16,7 @@ const OnlArea = () => {
 
   useEffect(() => {
     getUsers()
-  }, [authUser])
+  },[getUsers])
 
   return (
     <div className='oa'>

@@ -3,7 +3,6 @@ import MsgOther from './MsgOther';
 import MsgSelf from '../components/MsgSelf';
 import { useSelector } from 'react-redux';
 import { useAuthContext } from '../context/AuthContext';
-import { useParams } from "react-router-dom";
 import { format } from 'date-fns';
 import useConversations from "../hooks/useConversations"
 import { useSocketContext } from '../context/socketContext';
@@ -16,11 +15,8 @@ const ChatArea = () => {
     const lightTheme = useSelector((state) => state.theme.lightTheme);
     const messageEndRef = useRef(null);
     const { onlineUsers } = useSocketContext();
-    const { socket } = useSocketContext();
-    const { messages, reciever, setmessages } = useConversationContext();
+    const { messages, reciever } = useConversationContext();
     const { fetchMessages, sendMessage, deleteConversation } = useConversations();
-    const { chatId } = useParams();
-
 
     useEffect(() => {
         messageEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -29,7 +25,7 @@ const ChatArea = () => {
 
     useEffect(() => {
         fetchMessages();
-    }, [chatId])
+    }, [fetchMessages])
 
 
     const formatTime = (time) => {

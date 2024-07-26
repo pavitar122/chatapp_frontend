@@ -2,10 +2,12 @@ import axios from "axios";
 import { useAuthContext } from "../context/AuthContext";
 import { useConversationContext } from "../context/ConversationContext";
 import { useNavigate, useParams } from "react-router-dom";
+import { useCallback } from "react";
 
 
 
 const useConversations = () => {
+    const apiUrl = process.env.REACT_APP_API;
     const { authUser } = useAuthContext();
     const { setsidebarConversations, setmessages, setreciever, reciever, messages } = useConversationContext();
     const { chatId } = useParams();
@@ -19,7 +21,7 @@ const useConversations = () => {
                     authorization: authUser.token
                 }
             }
-            const response = await axios.get("https://chatapp-backend-zttg.onrender.com/api/messages/sidebarConversation", config)
+            const response = await axios.get(`${apiUrl}/api/messages/sidebarConversation`, config)
             if (response) {
                 setsidebarConversations(response.data)
             }
@@ -29,14 +31,14 @@ const useConversations = () => {
     }
 
 
-    const fetchMessages = async () => {
+    const fetchMessages = useCallback( async () => {
         try {
             const config = {
                 headers: {
                     authorization: authUser.token
                 }
             };
-            const response = await axios.get(`https://chatapp-backend-zttg.onrender.com/api/messages/fetchMessages/${chatId}`, config);
+            const response = await axios.get(`${apiUrl}/api/messages/fetchMessages/${chatId}`, config);
             if (response) {
                 setmessages(response.data.messages)
                 setreciever(response.data.participants[0])
@@ -44,7 +46,7 @@ const useConversations = () => {
         } catch (error) {
             console.error("Error fetching messages:", error);
         }
-    };
+    },[chatId, apiUrl, authUser.token, setmessages, setreciever]);
 
 
     const sendMessage = async (input) => {
@@ -57,7 +59,7 @@ const useConversations = () => {
             const data = {
                 message: input
             };
-            const response = await axios.post(`https://chatapp-backend-zttg.onrender.com/api/messages/send/${reciever._id}`, data, config);
+            const response = await axios.post(`${apiUrl}/api/messages/send/${reciever._id}`, data, config);
             if (response) {
                 messages.push(response.data)
             }
@@ -73,7 +75,7 @@ const useConversations = () => {
                     'authorization': authUser.token
                 }
             };
-            const response = await axios.get(`https://chatapp-backend-zttg.onrender.com/api/messages/deleteConversation/${chatId}`, config);
+            const response = await axios.get(`${apiUrl}/api/messages/deleteConversation/${chatId}`, config);
             if (response) {
                 navigate("/app/users")
             }
@@ -91,7 +93,7 @@ const useConversations = () => {
               'authorization': authUser.token
             }
           };
-          const response = await axios.get(`https://chatapp-backend-zttg.onrender.com/api/messages/startConversation/${id}`, config)
+          const response = await axios.get(`${apiUrl}/api/messages/startConversation/${id}`, config)
           if (response) {
             const participantData = response.data.participants
             const conversationId = response.data._id
